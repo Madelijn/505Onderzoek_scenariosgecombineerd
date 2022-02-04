@@ -60,7 +60,7 @@ map <- ggplot() +
   geom_sf(data = data, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
   bi_scale_fill(pal = "DkBlue", dim = 3) +
   labs(
-    title = "Scenario's Wandelstad & HoogDroog"
+    title = "Scenario's WandelStad & HoogDroog"
   ) +
   bi_theme()
 
@@ -79,22 +79,27 @@ finalPlot <- ggdraw() +
 
 
 #####-------------------------------------------------------------------------------------------------------
-### Bivariate card 01  WandelStad & HoogDroog
+### Bivariate card 01 I.WANDELSTAD & HOOGDROOG
 data01 <- bi_class(Scenarios_WandelHoogCompact, x = WandelStad01, y = HoogDroog01, style = "quantile", dim = 2)
+
+# Create costum pal 
+custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#a69ec7",
+                            val_2_1 = "#c85a5a", val_2_2 = "#923d84")
 
 map01 <- ggplot() +
   geom_sf(data = data01, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkViolet", dim = 2) +
+  bi_scale_fill(pal = custom_pal, dim = 2) +
   labs(
-    title = "Scenario's Wandelstad & HoogDroog"
+    title = "Scenario's WandelStad & HoogDroog"
   ) +
   bi_theme()
 
-legend01 <- bi_legend(pal = "DkViolet",
+legend01 <- bi_legend(pal = custom_pal,
+                      #pal = custom_pal,
                       dim = 2,
                       xlab = " WandelStad > 60% ",
                       ylab = " HoogDroog > 60% ",
-                      size = 10)
+                      size = 12)
 
 finalPlotWH01 <- ggdraw() +
   draw_plot(map01, 0, 0, 1, 1) +
@@ -102,23 +107,27 @@ finalPlotWH01 <- ggdraw() +
 
 
 #####---------------------------------------------------------------------------------------------------------
-### Bivariate map 01    CompacteStad & HoogDroog  
+### Bivariate map 01 II. COMPACTE STAD & HOOGDROOG  
 dataCH01 <- bi_class(Scenarios_WandelHoogCompact, x = CompacteStad01, y = HoogDroog01, style = "quantile", dim = 2)
+
+custom_palCH <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#a69ec7",
+                            val_2_1 = "#64acbe", val_2_2 = "#ab295c")
+
 
 mapCH01 <- ggplot() +
   geom_sf(data = dataCH01, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkCyan", dim = 2) +
+  bi_scale_fill(pal = custom_palCH , dim = 2) +
   labs(
     title = "Scenario's CompacteStad & HoogDroog"
     # subtitle = "Dark Blue (DkBlue) Palette"
   ) +
   bi_theme()
 
-legendCH01 <- bi_legend(pal = "DkCyan",
+legendCH01 <- bi_legend(pal = custom_palCH,
                         dim = 2,
                         xlab = " CompacteStad > 60% ",
                         ylab = " HoogDroog > 60% ",
-                        size = 10)
+                        size = 12)
 
 finalPlotCH01 <- ggdraw() +
   draw_plot(mapCH01, 0, 0, 1, 1) +
@@ -127,27 +136,23 @@ finalPlotCH01 <- ggdraw() +
 
 ####-------------------------------------------------
 
-
-
-
-
-### Bivariate map 01 Wandelstad & CompacteStad  
+### Bivariate map 01  III. WANDELSTAD & COMPACTESTAD
 dataWC01 <- bi_class(Scenarios_WandelHoogCompact, x = WandelStad01, y = CompacteStad01, style = "quantile", dim = 2)
 
 mapWC01 <- ggplot() +
   geom_sf(data = dataWC01, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkBlue", dim = 2) +
+  bi_scale_fill(pal = 'GrPink', dim = 2) +
   labs(
-    title = "Scenario's Wandelstad & CompacteStad"
+    title = "Scenario's WandelStad & CompacteStad"
     # subtitle = "Dark Blue (DkBlue) Palette"
   ) +
   bi_theme()
 
-legendWC01 <- bi_legend(pal = "DkBlue",
+legendWC01 <- bi_legend(pal = "GrPink",
                         dim = 2,
                         xlab = "WandelStad > 60%",
                         ylab = "CompacteStad > 60%",
-                        size = 10)
+                        size = 12)
 
 finalPlotWC01 <- ggdraw() +
   draw_plot(mapWC01, 0, 0, 1, 1) +
